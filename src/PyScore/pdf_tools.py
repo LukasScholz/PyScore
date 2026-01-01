@@ -4,6 +4,7 @@ import string
 import shutil
 
 import fitz
+import cv2
 
 
 class PDF2Image:
@@ -30,3 +31,11 @@ class PDF2Image:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         shutil.rmtree(self.foldername)
+
+
+def show_pdf(files):
+    for f in files:
+        img = cv2.imread(f, cv2.IMREAD_GRAYSCALE)
+        cv2.imshow("Score", img)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
